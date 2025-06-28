@@ -1,0 +1,17 @@
+[
+  {
+    "name": "训练集",
+    "samples": 565,
+    "conversations": 75
+  },
+  {
+    "name": "验证集",
+    "samples": 69,
+    "conversations": 16
+  },
+  {
+    "name": "测试集",
+    "samples": 86,
+    "conversations": 17
+  }
+]
