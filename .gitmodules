@@ -1,0 +1,3 @@
+[submodule "core/train/LLaMA-Factory"]
+	path = core/train/LLaMA-Factory
+	url = https://github.com/hiyouga/LLaMA-Factory.git

@@ -28,10 +28,10 @@ def chat2alpaca(conversation):
                 
                 dataset.append({
                     "instruction": instruction_str,
+                    "input":"",
                     "output": output_str,
                     "system": "",
-                    "history": [pair.copy() for pair in history],
-                    "conversation_id": conversation["conversation_id"]
+                    "history": [pair.copy() for pair in history]
                 })
                 
                 # 更新历史记录
@@ -54,10 +54,10 @@ def chat2alpaca(conversation):
         
         dataset.append({
             "instruction": instruction_str,
+            "input": "",
             "output": output_str,
             "system": "",
             "history": [pair.copy() for pair in history],
-            "conversation_id": conversation["conversation_id"]
         })
     
     return dataset
@@ -113,7 +113,6 @@ def generate_dataset_report(data, name):
     return {
         "name": name,
         "samples": num_samples,
-        "conversations": len(set(s["conversation_id"] for s in data))
     }
 
 def process_chat_data(input_file, output_prefix, ratios=(0.8, 0.1, 0.1), seed=42):
@@ -160,7 +159,6 @@ def process_chat_data(input_file, output_prefix, ratios=(0.8, 0.1, 0.1), seed=42
     for report in reports:
         print(f"\n{report['name']}报告:")
         print(f"  样本数: {report['samples']}")
-        print(f"  对话数: {report['conversations']}")
     
     print("\n文件已保存:")
     print(f"  训练集: {output_prefix}_train.json")
@@ -172,7 +170,7 @@ if __name__ == "__main__":
     # ===== 配置区域 =====
     INPUT_FILE = "data\cleaned_conversations.json"     # 输入的聊天记录文件
     OUTPUT_PREFIX = "alpaca_dataset"      # 输出文件前缀
-    RATIOS = (0.7, 0.15, 0.15)           # 训练/验证/测试比例
+    RATIOS = (1.0, 0.0, 0.0)           # 训练/验证/测试比例
     SEED = 42                             # 随机种子
     
     # ===== 执行处理 =====
